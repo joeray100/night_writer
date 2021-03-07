@@ -1,4 +1,4 @@
-require 'test_helper'
+require_relative 'test_helper'
 require 'minitest/autorun'
 require 'minitest/pride'
 
@@ -12,5 +12,20 @@ class TranslatorTest < Minitest::Test
     assert_instance_of Translator, @translator
   end
 
+  def test_it_look_up_a_single_braille_character_from_dictionary
+    expected = ["0.00.."]
+
+    assert_equal expected, @translator.look_it_up
+  end
+
+  def test_it_look_up_multiple_braille_charactes_from_dictionary
+    translator =  Translator.new("hello world")
+
+    expected = ["0.00..", "0..0..", "0.0.0.", "0.0.0.", "0..00.",
+                "00.00.", ".000.0", "0..00.", "0.000.", "0.0.0.",
+                "00.0.."]
+
+    assert_equal expected, translator.look_it_up
+  end
 
 end
