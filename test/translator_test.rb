@@ -28,4 +28,16 @@ class TranslatorTest < Minitest::Test
     assert_equal expected, translator.look_it_up
   end
 
+  def test_it_can_create_first_line_of_braille
+    assert_equal "0.", @file_translator.line_one
+  end
+
+  def test_it_can_create_second_line_of_braille
+    assert_equal "00", @file_translator.line_two
+  end
+  
+  def test_it_can_create_third_line_of_braille
+    assert_equal "..", @file_translator.line_three
+  end
+
 end
