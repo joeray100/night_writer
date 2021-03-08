@@ -20,7 +20,7 @@ class TranslatorTest < Minitest::Test
     translator =  Translator.new("hello world")
 
     expected = ["0.00..", "0..0..", "0.0.0.", "0.0.0.", "0..00.",
-                "00.00.", ".000.0", "0..00.", "0.000.", "0.0.0.",
+                "......", ".000.0", "0..00.", "0.000.", "0.0.0.",
                 "00.0.."]
 
     assert_equal expected, translator.look_it_up
