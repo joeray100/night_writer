@@ -1,9 +1,11 @@
+require_relative 'dictionary'
+
 class Translator
-  attr_reader :message,
-              :dictionary
+  attr_reader :message
 
   def initialize(message)
     @message = message
+    @new_message = message.delete("\n")
     @dictionary = Dictionary.new
   end
 
@@ -44,7 +46,15 @@ class Translator
       format << two
       format << three
       format.join
-    elsif line_one.size > 3
+    elsif line_one.size < 80
+      one = line_one + "\n"
+      two = line_two + "\n"
+      three = line_three + "\n"
+      format << one
+      format << two
+      format << three
+      format.join
+  elsif line_one.size > 80
       one = line_one.insert(80, "\n")
       two = line_two.insert(80, "\n")
       three = line_three.insert(80, "\n")
