@@ -29,15 +29,38 @@ class TranslatorTest < Minitest::Test
   end
 
   def test_it_can_create_first_line_of_braille
-    assert_equal "0.", @file_translator.line_one
+    assert_equal "0.", @translator.line_one
   end
 
   def test_it_can_create_second_line_of_braille
-    assert_equal "00", @file_translator.line_two
+    assert_equal "00", @translator.line_two
   end
-  
+
   def test_it_can_create_third_line_of_braille
-    assert_equal "..", @file_translator.line_three
+    assert_equal "..", @translator.line_three
+  end
+
+  def test_it_can_combine_lines_and_format_correct_output
+    expected = "0.
+00
+..
+"
+    assert_equal expected, @translator.formatted_output
+  end
+
+  def test_it_can_not_go_over_80_characters_in_length
+    translator = Translator.new("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+
+    expected =
+    "0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.
+................................................................................
+................................................................................
+0.
+..
+..
+"
+
+    assert_equal expected, translator.formatted_output
   end
 
 end

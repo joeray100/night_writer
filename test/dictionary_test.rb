@@ -13,8 +13,8 @@ class DictionaryTest < Minitest::Test
   end
 
   def test_it_can_return_hash_value_from_key
-    assert_equal ["0....."], @dictionary.english_to_brail["a"]
-    assert_equal ["0..000"], @dictionary.english_to_brail["z"]
+    assert_equal ["0....."], @dictionary.english_to_braille["a"]
+    assert_equal ["0..000"], @dictionary.english_to_braille["z"]
   end
 
 end

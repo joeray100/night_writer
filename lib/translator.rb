@@ -14,30 +14,48 @@ class Translator
   end
 
   def line_one
-    line1 = []
-    look_it_up.each do |array|
-      line1 <<  array[0]
-      line1 <<  array[1]
+    one = look_it_up.map do |array|
+      array[0] + array[1]
     end
-    line1.join
+    one.join
   end
 
   def line_two
-    line2 = []
-    look_it_up.each do |array|
-      line2 <<  array[2]
-      line2 <<  array[3]
+    two = look_it_up.map do |array|
+      array[2] + array[3]
     end
-    line2.join
+    two.join
   end
 
   def line_three
-    line3 = []
-    look_it_up.each do |array|
-      line3 <<  array[4]
-      line3 <<  array[5]
+    three = look_it_up.map do |array|
+      array[4] + array[5]
     end
-    line3.join
+    three.join
+  end
+
+  def formatted_output
+    format = []
+    if line_one.size < 3
+      one = line_one.insert(2, "\n")
+      two = line_two.insert(2, "\n")
+      three = line_three.insert(2, "\n")
+      format << one
+      format << two
+      format << three
+      format.join
+    elsif line_one.size > 3
+      one = line_one.insert(80, "\n")
+      two = line_two.insert(80, "\n")
+      three = line_three.insert(80, "\n")
+      format << one
+      format << two
+      format << three
+      format << format[0].slice!(81..161) + "\n"
+      format << format[1].slice!(81..161) + "\n"
+      format << format[2].slice!(81..161) + "\n"
+      format.join
+    end
   end
 
 end
