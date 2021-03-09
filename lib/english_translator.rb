@@ -1,11 +1,10 @@
 require_relative 'dictionary'
 
-class Translator
+class EnglishTranslator
   attr_reader :message
 
   def initialize(message)
     @message = message
-    @new_message = message.delete("\n")
     @dictionary = Dictionary.new
   end
 

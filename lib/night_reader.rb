@@ -1,14 +1,14 @@
-require_relative 'translator'
+require_relative 'braille_translator'
 
 input_file = File.open(ARGV[0], "r")
 braille = input_file.read
-count = input_file.size
-# translator = Translator.new(braille)
-# formatted_output = translator.formatted_output
-input_file.close
+
+
+translator = BrailleTranslator.new(braille)
+formatted_output = translator.braille_lookup
 
 output_file = File.open(ARGV[1], "w")
 original_message = output_file.write(formatted_output)
-output_file.close
+count = formatted_output.size
 
 puts "Created '#{ARGV[1]}' containing #{count} characters"
