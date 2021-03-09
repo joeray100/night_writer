@@ -13,9 +13,7 @@ class BrailleTranslator
   end
 
   def lookup
-    braille_to_word.map do |braille|
-      @dictionary.braille_to_english[braille]
-    end.flatten.join
+    @dictionary.braille_to_english[braille_to_word.join]
   end
 
   def braille_lookup

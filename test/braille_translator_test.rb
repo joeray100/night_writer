@@ -9,10 +9,9 @@ class BrailleTranslatorTest < Minitest::Test
   end
 
   def test_it_look_up_a_single_english_character_from_dictionary
-    # skip
     translator =  BrailleTranslator.new("0.00..")
 
-    expected = "h"
+    expected = ["h"]
 
     assert_equal expected, translator.lookup
   end
