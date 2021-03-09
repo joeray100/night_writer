@@ -8,10 +8,6 @@ class BrailleTranslator
     @dictionary = Dictionary.new
   end
 
-  def group_braille_by_six
-    @braille.split("").each_slice(6).to_a
-  end
-
   def lookup
     @dictionary.braille_to_english[braille_to_word.join]
   end
