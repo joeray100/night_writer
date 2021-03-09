@@ -54,6 +54,17 @@ class EnglishTranslatorTest < Minitest::Test
     assert_equal expected, translator.formatted_output
   end
 
+  def test_it_translate_multiple_braille_charactes_from_formatted_output
+    translator =  EnglishTranslator.new("hello world")
+
+    expected = +"0.0.0.0.0....00.0.0.00
+00.00.0..0..00.0000..0
+....0.0.0....00.0.0...
+"
+
+    assert_equal expected, translator.formatted_output
+  end
+
   def test_it_can_not_go_over_80_characters_in_length
     translator = EnglishTranslator.new("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
 
