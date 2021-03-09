@@ -7,6 +7,6 @@ formatted_output = translator.formatted_output
 
 output_file = File.open(ARGV[1], "w")
 braille = output_file.write(formatted_output)
-count = braille.size
+count = formatted_output.size
 
 puts "Created '#{ARGV[1]}' containing #{count} characters"

@@ -9,6 +9,6 @@ formatted_output = translator.braille_lookup
 
 output_file = File.open(ARGV[1], "w")
 original_message = output_file.write(formatted_output)
-count = original_message.size
+count = formatted_output.size
 
 puts "Created '#{ARGV[1]}' containing #{count} characters"
